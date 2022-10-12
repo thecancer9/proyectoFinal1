@@ -1,0 +1,48 @@
+body {
+    background-color: #fdeefc;
+}
+.bg-nav{
+    background-color: #f0d4ff;
+}
+.button {
+    border-color: #FF4B9F;
+    background-color: #6B2293;
+    color: #ffffff;
+}
+
+.button:hover {
+    background-color: #FF4B9F;
+    border-color: #6B2293;
+    color: aliceblue;
+}
+
+.button:active{
+    background-color: #fd92c4;
+}
+
+
+.text-a{
+    color: #ffffff;
+}
+.text:hover{
+    background-color: #FF4B9F;
+    color: aliceblue;
+}
+.menu{
+    background-color: #6B2293;
+    color: #ffffff;
+}
+.nav-a{
+    color: #ffffff;
+}
+.nav-a:hover{
+    background-color: #da9bfc;
+    color: #ffffff;
+    border-radius: 12px;
+}
+
+.text-z{
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 900;
+}

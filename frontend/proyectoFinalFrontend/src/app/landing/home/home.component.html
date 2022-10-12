@@ -1,0 +1,146 @@
+<!-- Login modal -->
+<div class="modal fade" id="loginModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content mymodal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                    <div class="mb-3">
+                        <label for="" class="col-form-label">User Name:</label>
+                        <input
+                            type="text"
+                            class="form-control in"
+                            placeholder="set your userName here"
+                            formControlName="loginUser"
+                            class="form-control"
+                            [ngClass]="{ 'is-valid': submitted && f['loginUser'].errors}" required>
+                        <div *ngIf="submitted && f['loginUser'].errors" class="invalid-feedback">
+                            <div *ngIf="f['loginUser'].errors['required']">
+                                Usuario requerido
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Password:</label>
+                        <input 
+                            type="password" 
+                            class="form-control in" 
+                            placeholder="set here your password"
+                            formControlName="loginPassword"
+                            class="form-control"
+                            [ngClass]="{ 'is-valid': submitted && f['loginPassword'].errors}">
+                        <div *ngIf="submitted && f['loginPassword'].errors" class="invalid-feedback">
+                            <div *ngIf="f['loginPassword'].errors['required']">
+                                Password requerido
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn close" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn success">Login</button>
+            </div>
+        </div>
+      </div>
+</div>
+
+<!-- Register modal -->
+<div class="modal fade" id="registerModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content mymodal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="registerUser"  #form="ngForm">
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <label for="" class="col-form-label">User Name:</label>
+                            <input 
+                                type="text" 
+                                class="form-control in" 
+                                placeholder="set your userName here" 
+                                formControlName="userName" 
+                                id="Username"
+                                required
+                                [class.is-invalid]="userName.invalid &&(userName.dirty || userName.touched)">
+                            <div *ngIf="userName.invalid && (userName.dirty || userName.touched)">
+                                <div *ngIf="userName.errors?.['required']" class="danger">
+                                    este campo es obligatorio
+                                </div>
+                            </div>  
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="col-form-label">Email:</label>
+                            <input type="text" class="form-control in" placeholder="set your email here">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Password:</label>
+                            <input type="password" class="form-control in" placeholder="set here your password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Repeat Password:</label>
+                            <input type="password" class="form-control in" placeholder="repeat password here">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn close" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn success">Register</button>
+            </div>
+        </div>
+      </div>
+</div>
+<div class="container-md">
+    <div id="mySlide" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mySlide" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#mySlide" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#mySlide" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../../../assets/Agricultura.jpg" class="d-block w-100" alt="..." height="550px">
+                <div class="carousel-caption d-none d-md-block text-z">
+                    AGRICULTURA
+                    <H1><p>Apoyo a la actividad de cultivo</p> </H1>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../../../assets/comida.jpg" class="d-block w-100" alt="..." height="550px">
+                <div class="carousel-caption d-none d-md-block text-z">
+                    SECTOR PRODUCTIVO
+                    <h1><p>Creditos al sector alimenticio y comercial</p> </h1>   
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../../../assets/Costura.jpg" class="d-block w-100" alt="..." height="550px">
+                <div class="carousel-caption d-none d-md-block text-z">
+                    MANUFACTURA TEXTIL
+                    <h1><p>Acceso rapido a creditos al sector industrial</p> </h1>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mySlide" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mySlide" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<div class="container">
+    <h2>INSODE IFD INVERSIONES SOLIDARIAS PARA EL DESARROLLO</h2>
+</div>
