@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NosotrosComponent } from './nosotros/nosotros.component';
+import { ConvocatoriaComponent } from './convocatoria/convocatoria.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     LandingComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    NosotrosComponent,
+    ConvocatoriaComponent
   ],
   imports: [
     CommonModule,
