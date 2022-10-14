@@ -30,14 +30,14 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // register
-    // this.registerUser = new FormGroup({
-    //   userName: new FormControl('',[
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(5)
-    //   ])
-    // });
+    //register
+    this.registerUser = new FormGroup({
+       userName: new FormControl('',[
+         Validators.required,
+         Validators.minLength(1),
+         Validators.maxLength(5)
+       ])
+     });
 
     // login
     this.loginForm = this.fb.group({

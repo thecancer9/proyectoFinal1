@@ -6,10 +6,9 @@ import { LandingComponent } from './landing.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ConvocatoriaComponent } from './convocatoria/convocatoria.component';
-
 
 @NgModule({
   declarations: [
@@ -23,7 +22,8 @@ import { ConvocatoriaComponent } from './convocatoria/convocatoria.component';
   imports: [
     CommonModule,
     LandingRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
 })
 export class LandingModule { }
