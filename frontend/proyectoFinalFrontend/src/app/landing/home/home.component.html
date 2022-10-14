@@ -3,18 +3,18 @@
     <div class="modal-dialog">
         <div class="modal-content mymodal">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Ingresar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
                     <div class="mb-3">
-                        <label for="" class="col-form-label">User Name:</label>
+                        <label for="" class="col-form-label">Nombre de usuario:</label>
                         <input
                             type="text"
-                            class="form-control in"
-                            placeholder="set your userName here"
+                            class="form-control"
+                            placeholder="Ingrese su nombre de usuario aqui"
                             formControlName="loginUser"
                             class="form-control"
                             [ngClass]="{ 'is-valid': submitted && f['loginUser'].errors}" required>
