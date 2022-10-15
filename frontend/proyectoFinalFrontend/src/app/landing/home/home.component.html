@@ -7,36 +7,43 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-                    <div class="mb-3">
-                        <label for="" class="col-form-label">Nombre de usuario:</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Ingrese su nombre de usuario aqui"
-                            formControlName="loginUser"
-                            class="form-control"
-                            [ngClass]="{ 'is-valid': submitted && f['loginUser'].errors}" required>
-                        <div *ngIf="submitted && f['loginUser'].errors" class="invalid-feedback">
-                            <div *ngIf="f['loginUser'].errors['required']">
-                                Usuario requerido
+                <form [formGroup]="loginForm" #form="ngForm">
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <label for="" class="col-form-label">Nombre de usuario:</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Ingrese su nombre de usuario aqui"
+                                formControlName="userLogin"
+                                id="userLogin"
+                                name="userLogin"
+                                class="form-control form-control-sm"
+                                [class.is-invalid]="userLogin.invalid && (userLogin.dirty || userLogin.touched)">
+                            <div *ngIf="userLogin.invalid && (userLogin.dirty || userLogin.touched)" class="invalid-feedback">
+                                <div *ngIf="userLogin.errors?.['required']">
+                                    Usuario requerido
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Password:</label>
-                        <input 
-                            type="password" 
-                            class="form-control in" 
-                            placeholder="set here your password"
-                            formControlName="loginPassword"
-                            class="form-control"
-                            [ngClass]="{ 'is-valid': submitted && f['loginPassword'].errors}">
-                        <div *ngIf="submitted && f['loginPassword'].errors" class="invalid-feedback">
-                            <div *ngIf="f['loginPassword'].errors['required']">
-                                Password requerido
+                        <div class="mb-3">
+                            <label for="passwordLogin" class="form-label">Contraseña:</label>
+                            <div class="input-group input-group-sm has-validation">
+                                <input 
+                                    [type]="user.showPassword ? 'text' : 'passwordLogin'" 
+                                    id="passwordLogin"
+                                    name="passwordLogin"
+                                    class="form-control in" 
+                                    placeholder="Ingrese su contraseña aqui"
+                                    formControlName="passwordLogin"
+                                    class="form-control form-control-sm"
+                                    [class.is-invalid]="passwordLogin.invalid && (passwordLogin.dirty || passwordLogin.touched)">
+                                    <div *ngIf="passwordLogin.invalid && (passwordLogin.dirty || passwordLogin.touched)" class="invalid-feedback">
+                                        <div *ngIf="passwordLogin.errors?.['required']">
+                                          Este campo es requerido.
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -45,6 +52,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn close" data-bs-dismiss="modal">Close</button>
+
                 <button type="submit" class="btn success">Login</button>
             </div>
         </div>
@@ -52,6 +60,7 @@
 </div>
 
 <!-- Register modal -->
+
 <div class="modal fade" id="registerModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content mymodal">
@@ -60,47 +69,100 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="registerUser"  #form="ngForm">
+                <form [formGroup]="registerForm"  #form="ngForm">
                     <div class="form-group">
                         <div class="mb-3">
-                            <label for="" class="col-form-label">User Name:</label>
+                            <label for="userRegister" class="col-form-label">Nombre de Usuario:</label>
                             <input 
                                 type="text" 
-                                class="form-control in" 
-                                placeholder="set your userName here" 
-                                formControlName="userName" 
-                                id="Username"
-                                required
-                                [class.is-invalid]="userName.invalid &&(userName.dirty || userName.touched)">
-                            <div *ngIf="userName.invalid && (userName.dirty || userName.touched)">
-                                <div *ngIf="userName.errors?.['required']" class="danger">
-                                    este campo es obligatorio
+                                class="form-control form-control-sm" 
+                                placeholder="Ingrese su nombre de usuario aqui" 
+                                formControlName="userRegister" 
+                                id="userRegister"
+                                name="userRegister"
+                                required minlength="5"
+                                maxlength="20"
+                                [class.is-invalid]="userRegister.invalid && (userRegister.dirty || userRegister.touched)">
+                            <div *ngIf="userRegister.invalid && (userRegister.dirty || userRegister.touched)" class="invalid-feedback">
+                                <div *ngIf="userRegister.errors?.['required']">
+                                    Este campo es requerido.
                                 </div>
-                            </div>  
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="" class="col-form-label">Email:</label>
-                            <input type="text" class="form-control in" placeholder="set your email here">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Password:</label>
-                            <input type="password" class="form-control in" placeholder="set here your password">
+                                <div *ngIf="userRegister.errors?.['minlength']">
+                                    Este campo debe tener al menos 5 caracteres.
+                                </div>
+                                <div *ngIf="userRegister.errors?.['maxlength']">
+                                    Este campo debe terner maximo 20 caracteres.
+                                </div> 
+                            </div> 
                         </div>
                         <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Repeat Password:</label>
-                            <input type="password" class="form-control in" placeholder="repeat password here">
+                            <label for="emailRegister" class="col-form-label">Correo:</label>
+                            <input type="emailRegister"
+                            id="emailRegister"
+                            name="emailRegister"
+                            formControlName="emailRegister"
+                            class="form-control in"
+                            placeholder="ejemplo-correo@dominio.com"
+                            required minlength= "5"
+                            maxlength="50"
+                            class="form-control form-control-sm"
+                            [class.is-invalid]="emailRegister.invalid && (emailRegister.dirty || emailRegister.touched)">
+                            <div *ngIf="emailRegister.invalid && (emailRegister.dirty || emailRegister.touched)" class="invalid-feedback">
+                                <div *ngIf="emailRegister.errors?.['required']">
+                                  Este campo es requerido.
+                                </div>
+                                <div *ngIf="emailRegister.errors?.['minlength']">
+                                  Este campo debe tener al menos 1 caracter.
+                                </div>
+                                <div *ngIf="emailRegister.errors?.['maxlength']">
+                                  Este campo debe tener maximo 50 caracteres.
+                                </div>
+                                <div *ngIf="!emailRegister.errors?.['required'] && !emailRegister.errors?.['minlength'] && !emailRegister.errors?.['maxlength'] && emailRegister.errors?.['emailValidator']">
+                                  Formato de correo invalido.
+                                </div>
+                              </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordRegister" class="col-form-label">Contraseña:</label>
+                            <div class ="input-group input-group-sm has-validation">
+                                <input [type]="user.showPassword ? 'text' : 'password'" 
+                                id="passwordRegister" 
+                                name="passwordRegister" 
+                                formControlName="passwordRegister" 
+                                required minlength="6" 
+                                maxlength="15"
+                                class="form-control form-control-sm" 
+                                placeholder="Ingrese su contraseña aqui"
+                                [class.is-invalid]="passwordRegister.invalid && (passwordRegister.dirty || passwordRegister.touched)">
+                                <button type="button" class="btn btn-outline-secondary" (click)="user.showPassword = !user.showPassword">
+                                    <i class="bi" [ngClass]="{'bi-eye-fill': !user.showPassword, 'bi-eye-slash-fill': user.showPassword}"></i>
+                                </button>
+                                <div *ngIf="passwordRegister.invalid && (passwordRegister.dirty || passwordRegister.touched)" class="invalid-feedback">
+                                    <div *ngIf="passwordRegister.errors?.['required']">
+                                      Este campo es requerido.
+                                    </div>
+                                    <div *ngIf="passwordRegister.errors?.['minlength']">
+                                      Este campo debe tener al menos 6 caracteres.
+                                    </div>
+                                    <div *ngIf="passwordRegister.errors?.['maxlength']">
+                                        Este campo debe terner maximo 15 caracteres.
+                                    </div> 
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn close" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn success">Register</button>
+                        <button type="button" (click)="onReset()" class="btn btn-warning float-right">Reset</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn close" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn success">Register</button>
-            </div>
+            </div>            
         </div>
       </div>
 </div>
+
 <div class="container-md">
     <div id="mySlide" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
