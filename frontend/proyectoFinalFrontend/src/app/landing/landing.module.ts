@@ -9,6 +9,9 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ConvocatoriaComponent } from './convocatoria/convocatoria.component';
+import { CreditosComponent } from './creditos/creditos.component';
+import { AhorrosComponent } from './ahorros/ahorros.component';
+import { SegurosComponent } from './seguros/seguros.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { ConvocatoriaComponent } from './convocatoria/convocatoria.component';
     FooterComponent,
     HomeComponent,
     NosotrosComponent,
-    ConvocatoriaComponent
+    ConvocatoriaComponent,
+    CreditosComponent,
+    AhorrosComponent,
+    SegurosComponent
   ],
   imports: [
     CommonModule,
